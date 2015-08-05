@@ -7,3 +7,10 @@
 Repository with Go code snippets.
 
 - unix : HTTP communication through a [Unix Domain Socket]()
+
+
+## Links
+
+- [Go source : net/http/transport](https://golang.org/src/net/http/transport.go)
+- [StackOverflow : Unix Sockets in Go](http://stackoverflow.com/questions/2886719/unix-sockets-in-go)
+- [grokbase : [go-nuts] net.Transport with unix domain socket](http://grokbase.com/t/gg/golang-nuts/134cwz1k35/go-nuts-net-transport-with-unix-domain-socket)
