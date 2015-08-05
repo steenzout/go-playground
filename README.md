@@ -6,3 +6,4 @@
 
 Repository with Go code snippets.
 
+- unix : HTTP communication through a [Unix Domain Socket]()
