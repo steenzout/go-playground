@@ -59,7 +59,7 @@ func NewUnixDomainSocketServer(path string) *UnixDomainSocketHTTPServer {
 	var socket string
 
 	if path == "" {
-		socket = common.Domain_Socket
+		socket = common.DomainSocket
 	} else {
 		socket = path
 	}

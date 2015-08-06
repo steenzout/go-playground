@@ -27,7 +27,7 @@ func NewUnixDomainSocketTransport(path string) *http.Transport {
 func NewUnixDomainSocketHTTPClient(path string) *http.Client {
 	var socket string
 	if path == "" {
-		socket = common.Domain_Socket
+		socket = common.DomainSocket
 	} else {
 		socket = path
 	}
