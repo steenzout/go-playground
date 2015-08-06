@@ -12,8 +12,6 @@ install:
   - go get golang.org/x/crypto/bcrypt
 
   - go get github.com/stretchr/testify
-  - go get github.com/go-sql-driver/mysql
-  - go get github.com/lib/pq
 
 script:
   - $HOME/gopath/bin/goveralls -service=travis-ci
