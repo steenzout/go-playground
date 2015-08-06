@@ -14,7 +14,7 @@ install:
   - go get github.com/stretchr/testify
 
 script:
-  - $HOME/gopath/bin/goveralls -service=travis-ci unix
+  - $HOME/gopath/bin/goveralls -service=travis-ci github.com/steenzout/go-playground/unix
   - go test -cover ./...
   - golint ./...
 
