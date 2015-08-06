@@ -1,12 +1,14 @@
 package server
 
 import (
+	"bytes"
 	"fmt"
+	"io/ioutil"
+	"log"
 	"net"
 	"net/http"
 
 	"github.com/steenzout/go-playground/unix/common"
-	"log"
 )
 
 // UnixDomainSocketHTTPServer implements a HTTP server over a unix domain socket connection.
@@ -16,14 +18,23 @@ type UnixDomainSocketHTTPServer struct {
 
 // ServeHTTP handle HTTP requests.
 func (h *UnixDomainSocketHTTPServer) ServeHTTP(w http.ResponseWriter, r *http.Request) {
+	var err error
+	var contents []byte
+
+	contents, err = ioutil.ReadAll(r.Body)
+	if err != nil {
+		log.Println("server: ERROR ", err)
+		return
+	}
+	log.Println("server: contents=", bytes.Index(contents, []byte{0}))
+
 	log.Println("server: r.URL.Scheme=", r.URL.Scheme)
 	log.Println("server: r.URL.Host=", r.URL.Host)
 	log.Println("server: r.URL.RawQuery=", r.URL.RawQuery)
 	log.Println("server: r.URL.Path=", r.URL.Path)
 
-	fmt.Fprintf(w, "r.URL.Path=", r.URL.Path, "\r\n")
-	fmt.Fprintf(w, "r.URL.Query=", r.URL.Query(), "\r\n")
-
+	w.Write([]byte(fmt.Sprintf("r.URL.Path=", r.URL.Path, "\r\n")))
+	w.Write([]byte(fmt.Sprintf("r.URL.Query=", r.URL.Query(), "\r\n")))
 }
 
 // Close closes the unix domain socket connection.

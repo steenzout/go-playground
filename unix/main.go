@@ -1,7 +1,6 @@
 package main
 
 import (
-	"bytes"
 	"io/ioutil"
 	"log"
 	"net/http"
@@ -33,7 +32,7 @@ func main() {
 		log.Println("client: ERROR ", err)
 		os.Exit(1)
 	}
-	log.Println("client: contents=", bytes.Index(contents, []byte{0}))
+	log.Println("client: contents=", string(contents))
 
 	log.Println()
 
@@ -48,5 +47,5 @@ func main() {
 		log.Println("client: ERROR ", err)
 		os.Exit(1)
 	}
-	log.Println("client: contents=", bytes.Index(contents, []byte{0}))
+	log.Println("client: contents=", string(contents))
 }
